@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlayerModel
 {
-    class CurrentPlayer : PlayerBase
+    public class CurrentPlayer : PlayerBase
     {
         public int MinNumber { get; set; }
 
@@ -16,12 +16,6 @@ namespace PlayerModel
 
         public CurrentPlayer() : base()
         {
-        }
-        public CurrentPlayer(int Id, string name, int score, int GivenMinNumber, int GivenMaxNumber, int GivenSecretNumber) : base(Id, name, score)
-        {
-            MinNumber = GivenMinNumber;
-            MaxNumber = GivenMaxNumber;
-            SecretNumber = GivenSecretNumber;
         }
     }
 }

@@ -26,14 +26,8 @@ namespace PlayerModel
         public PlayerBase()
         {
             PlayerBaseId = -1;
-            PlayerName = "Guest";
+            PlayerName = "Гость";
             PlayerScore = 0;
-        }
-        public PlayerBase(int id, string name, int score)
-        {
-            PlayerBaseId = id;
-            PlayerScore = score;
-            PlayerName = name;
         }
 
         ///изменяет пароль, если успешно то вернет true

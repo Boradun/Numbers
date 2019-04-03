@@ -8,15 +8,25 @@ using PlayerModel;
 
 namespace SaveLoader
 {
-    public class SaverToDb
+    public static class SaverToDb
     {
-        public class PlayerContext : DbContext
+        public static bool SavePlayerToDB(PlayerBase player)
         {
-            public PlayerContext() : base()
+            using (PlayerContext playerContext = new PlayerContext())
             {
-            }
+                if (playerContext.IsPlayerExist(player.PlayerName))
+                {
+                    playerContext.Players.FirstOrDefault(x => x.PlayerName == player.PlayerName).PlayerScore = player.PlayerScore;
 
-            public DbSet<PlayerBase> Players { get; set; }
+                }
+                else
+                {
+                    playerContext.Players.Add(player);
+                }
+                playerContext.SaveChanges();
+
+                return true;
+            }
         }
     }
 }
