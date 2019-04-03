@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numbers", "Numbers\Numbers.csproj", "{3BC879A9-1ADD-433E-B5F1-02E2D5F9D85F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerModel", "PlayerModel\PlayerModel.csproj", "{229B71E7-B7F7-49BA-A67F-A03189C0378C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveLoader", "SaveLoader\SaveLoader.csproj", "{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BC879A9-1ADD-433E-B5F1-02E2D5F9D85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC879A9-1ADD-433E-B5F1-02E2D5F9D85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC879A9-1ADD-433E-B5F1-02E2D5F9D85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC879A9-1ADD-433E-B5F1-02E2D5F9D85F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229B71E7-B7F7-49BA-A67F-A03189C0378C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229B71E7-B7F7-49BA-A67F-A03189C0378C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229B71E7-B7F7-49BA-A67F-A03189C0378C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229B71E7-B7F7-49BA-A67F-A03189C0378C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86525BC1-7655-4D62-999B-89D18A5005FD}
+	EndGlobalSection
+EndGlobal
