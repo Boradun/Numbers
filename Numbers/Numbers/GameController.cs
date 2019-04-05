@@ -151,7 +151,17 @@ namespace Game
                 else
                 {
                     if (attemptLast > 0)
+                    {
                         Console.WriteLine($"Не правильно, попробуйте еще раз. Осталось попыток {attemptLast--}");
+                        if (attempt > player2.SecretNumber)
+                        {
+                            Console.WriteLine($"Загаданное число меньше {attempt}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Загаданное число больше {attempt}");
+                        }
+                    }
                     else
                     {
                         Console.WriteLine("К сожалению у вас не осталось попыток ;(\nНажмите любую клавишу для продолжения...");
