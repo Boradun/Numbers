@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PlayerModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayerModel
+namespace Player
 {
     public class CurrentPlayer : PlayerBase
     {

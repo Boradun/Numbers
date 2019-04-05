@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using PlayerModel;
 using SaveLoader;
+using PlayerModel;
 
 namespace Game
 {
     static class GameController
     {
-        static CurrentPlayer _player1;
-        static CurrentPlayer _player2;
+        static PlayerBase _player1;
+        static PlayerBase _player2;
 
         static GameController()
         {
-            _player1 = new CurrentPlayer() { PlayerName = "Гость 1" };
-            _player2 = new CurrentPlayer() { PlayerName = "Гость 2" };
+            _player1 = new PlayerBase() { PlayerName = "Гость 1" };
+            _player2 = new PlayerBase() { PlayerName = "Гость 2" };
         }
 
         public static void MainMenu()
@@ -72,18 +72,30 @@ namespace Game
             Console.Clear();
             Console.WriteLine($"Раунд 1:");
             Round(_player1, _player2);
+            Console.Clear();
+            Console.WriteLine($"Раунд 2:");
             Round(_player2, _player1);
         }
 
-        static void Round(CurrentPlayer player1, CurrentPlayer player2)
+        static void Round(PlayerBase playerComeUP, PlayerBase playerThatSolve)
         {
-            InputNumbers(player1);
+            InputNumbers(playerComeUP);
             Console.Clear();
-            GuessNumber(player2);
+            GuessNumber(playerThatSolve, playerComeUP);
+            SavePlayer(playerThatSolve);
         }
 
-        static void InputNumbers(CurrentPlayer currentPlayer)
+        static void SavePlayer(PlayerBase player)
         {
+            if (player.PlayerName != "Гость 1")
+            {
+                SaverToDb.SavePlayerToDB(player);
+            }
+        }
+
+        static void InputNumbers(PlayerBase currentPlayer)
+        {
+            Console.Clear();
             Console.WriteLine($"Игрок {currentPlayer.PlayerName} введите минимальное число, которое Вы можете загадать. Если не ввести, присвоится число 0:");
             currentPlayer.MinNumber = ReadNumberFromConsole();
             Console.WriteLine($"Игрок {currentPlayer.PlayerName} введите максимальное число, которое Вы можете загадать. Если не ввести, присвоится число 0:");
@@ -112,12 +124,42 @@ namespace Game
                     Console.WriteLine($"{currentPlayer.PlayerName}, Вы ввели число, которое за границами допустимого диапазона");
                 }
             } while (true);
-            currentPlayer.SecretNumber = ReadNumberFromConsole();
+            //currentPlayer.SecretNumber = ReadNumberFromConsole();
         }
 
-        static void GuessNumber(CurrentPlayer currentPlayer)
+        static void GuessNumber(PlayerBase currentPlayer, PlayerBase player2)
         {
-            Console.WriteLine($"{currentPlayer.PlayerName} вам нужно отгадать число x, которое ");
+            Console.WriteLine($"{currentPlayer.PlayerName} вам нужно отгадать число x, где {player2.MinNumber}<= x <={player2.MaxNumber}: ");
+            int attempt;
+            int attemptLast = 1;
+            for (int temp = player2.MaxNumber - player2.MinNumber; temp > 1; temp = temp / 2)
+            {
+                attemptLast++;
+            }
+
+            do
+            {
+                attempt = ReadNumberFromConsole();
+
+                if (attempt == player2.SecretNumber)
+                {
+                    Console.WriteLine($"Правильно! получено {attemptLast} очков, \nНажмите любую клавишу для продолжения...");
+                    currentPlayer.PlayerScore += attemptLast;
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    if (attemptLast > 0)
+                        Console.WriteLine($"Не правильно, попробуйте еще раз. Осталось попыток {attemptLast--}");
+                    else
+                    {
+                        Console.WriteLine("К сожалению у вас не осталось попыток ;(\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
+                        break;
+                    }
+                }
+            } while (true);
         }
 
         //считывает значение int с консоли
@@ -175,11 +217,11 @@ namespace Game
         }
 
         //пытается загрузить существующего пользователя
-        public static CurrentPlayer LoadPlayer()
+        public static PlayerBase LoadPlayer()
         {
             string name;
             string pass;
-            CurrentPlayer currentPlayer = new CurrentPlayer();
+            PlayerBase currentPlayer = new PlayerBase();
             using (PlayerContext context = new PlayerContext())
             {
                 Console.Clear();
