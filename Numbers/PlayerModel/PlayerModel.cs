@@ -8,7 +8,7 @@ namespace PlayerModel
 {
     public class Player
     {
-        public int PlayerBaseId { get; set; }
+        public int PlayerId { get; set; }
 
         public string PlayerName { get; set; }
 
@@ -24,7 +24,7 @@ namespace PlayerModel
 
         public Player()
         {
-            PlayerBaseId = -1;
+            PlayerId = -1;
             PlayerName = "Гость";
             PlayerScore = 0;
         }

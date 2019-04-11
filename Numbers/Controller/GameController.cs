@@ -87,7 +87,7 @@ namespace Controller
 
         static void SavePlayer(Player player)
         {
-            if (player.PlayerName != "Гость 1")
+            if (player.PlayerName != "Гость 1"&& player.PlayerName != "Гость 2")
             {
                 SaverToDb.SavePlayerToDB(player);
             }
