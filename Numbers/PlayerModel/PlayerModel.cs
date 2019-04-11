@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlayerModel
 {
-    public class PlayerBase
+    public class Player
     {
         public int PlayerBaseId { get; set; }
 
@@ -22,7 +22,7 @@ namespace PlayerModel
 
         public int SecretNumber { get; set; }
 
-        public PlayerBase()
+        public Player()
         {
             PlayerBaseId = -1;
             PlayerName = "Гость";

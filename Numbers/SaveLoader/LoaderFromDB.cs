@@ -9,7 +9,7 @@ namespace SaveLoader
 {
     public static class LoaderFromDB
     {
-        public static PlayerBase LoadPlayer(string name,string password)
+        public static Player LoadPlayer(string name,string password)
         {
             using (PlayerContext context = new PlayerContext())
             {

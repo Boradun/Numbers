@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerModel", "PlayerModel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveLoader", "SaveLoader\SaveLoader.csproj", "{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{022199CC-7130-40F0-B334-9E97716FB7AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1B115EF-B2D4-4056-B3E0-79053D8E2A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022199CC-7130-40F0-B334-9E97716FB7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022199CC-7130-40F0-B334-9E97716FB7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022199CC-7130-40F0-B334-9E97716FB7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022199CC-7130-40F0-B334-9E97716FB7AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

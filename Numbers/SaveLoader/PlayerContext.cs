@@ -14,7 +14,7 @@ namespace SaveLoader
         {
         }
 
-        public DbSet<PlayerBase> Players { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         public bool IsPlayerExist(string playerName)
         {

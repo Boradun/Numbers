@@ -10,7 +10,7 @@ namespace SaveLoader
 {
     public static class SaverToDb
     {
-        public static bool SavePlayerToDB(PlayerBase player)
+        public static bool SavePlayerToDB(Player player)
         {
             using (PlayerContext playerContext = new PlayerContext())
             {

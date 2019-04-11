@@ -1,23 +1,23 @@
-﻿using System;
+﻿using PlayerModel;
+using SaveLoader;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using SaveLoader;
-using PlayerModel;
+using System.Threading.Tasks;
 
-namespace Game
+namespace Controller
 {
-    static class GameController
+    public static class GameController
     {
-        static PlayerBase _player1;
-        static PlayerBase _player2;
+        static Player _player1;
+        static Player _player2;
 
         static GameController()
         {
-            _player1 = new PlayerBase() { PlayerName = "Гость 1" };
-            _player2 = new PlayerBase() { PlayerName = "Гость 2" };
+            _player1 = new Player() { PlayerName = "Гость 1" };
+            _player2 = new Player() { PlayerName = "Гость 2" };
         }
 
         public static void MainMenu()
@@ -77,7 +77,7 @@ namespace Game
             Round(_player2, _player1);
         }
 
-        static void Round(PlayerBase playerComeUP, PlayerBase playerThatSolve)
+        static void Round(Player playerComeUP, Player playerThatSolve)
         {
             InputNumbers(playerComeUP);
             Console.Clear();
@@ -85,7 +85,7 @@ namespace Game
             SavePlayer(playerThatSolve);
         }
 
-        static void SavePlayer(PlayerBase player)
+        static void SavePlayer(Player player)
         {
             if (player.PlayerName != "Гость 1")
             {
@@ -93,7 +93,7 @@ namespace Game
             }
         }
 
-        static void InputNumbers(PlayerBase currentPlayer)
+        static void InputNumbers(Player currentPlayer)
         {
             Console.Clear();
             Console.WriteLine($"Игрок {currentPlayer.PlayerName} введите минимальное число, которое Вы можете загадать. Если не ввести, присвоится число 0:");
@@ -127,7 +127,7 @@ namespace Game
             //currentPlayer.SecretNumber = ReadNumberFromConsole();
         }
 
-        static void GuessNumber(PlayerBase currentPlayer, PlayerBase player2)
+        static void GuessNumber(Player currentPlayer, Player player2)
         {
             Console.WriteLine($"{currentPlayer.PlayerName} вам нужно отгадать число x, где {player2.MinNumber}<= x <={player2.MaxNumber}: ");
             int attempt;
@@ -201,7 +201,7 @@ namespace Game
         //пытается создать нового пользователя, с уникальным именем
         public static void CreatePlayer()
         {
-            var player = new PlayerBase();
+            var player = new Player();
             var context = new PlayerContext();
             Console.WriteLine("Создание игрока: \n Введите ваше имя:");
             do
@@ -227,11 +227,11 @@ namespace Game
         }
 
         //пытается загрузить существующего пользователя
-        public static PlayerBase LoadPlayer()
+        public static Player LoadPlayer()
         {
             string name;
             string pass;
-            PlayerBase currentPlayer = new PlayerBase();
+            Player currentPlayer = new Player();
             using (PlayerContext context = new PlayerContext())
             {
                 Console.Clear();
@@ -241,7 +241,7 @@ namespace Game
                     name = Console.ReadLine();
                     if (context.IsPlayerExist(name))
                     {
-                        PlayerBase loadedPlayer;
+                        Player loadedPlayer;
                         Console.WriteLine($"Добро пожаловать {name}, пожалуйста введите ваш пароль:");
                         do
                         {
